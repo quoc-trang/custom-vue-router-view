@@ -34,7 +34,33 @@ export function createRouter(options) {
       // create a RouterView component, which will render the current route component
       // along with some extra HTML to mimic a browser
       // just like with Vue Router all the RouteRecords are set via options.routes (see main.js)
-      const RouterView = defineComponent({});
+      const RouterView = defineComponent(() => {
+        return () => {
+          const crrRoute = routes.find((r) => r.path === routePath.value);
+          return h("div", { class: "mockup-browser-wrapper" }, [
+            h("div", { class: "mockup-browser-toolbar" }, [
+              h("div", { class: "mockup-browser-url" }, [
+                h("span", origin),
+                h("input", {
+                  value: routePath.value,
+                  onChange: (e) => {
+                    const { push } = getRouter(route);
+                    const matchingRoute = routes.find(
+                      (r) => r.path === e.target.value
+                    );
+                    if (matchingRoute) {
+                      push(matchingRoute.path);
+                    }
+                  },
+                }),
+              ]),
+            ]),
+            h("div", { class: "mockup-browser-content" }, [
+              h(crrRoute.component),
+            ]),
+          ]);
+        };
+      });
 
       app.component("RouterView", RouterView);
     },
