@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.page {
+  @apply flex justify-center items-center h-screen;
+}
+.page-content {
+  @apply p-8;
+}
+
+.mockup-browser-url {
+  @apply border input border-base-300 w-full h-auto p-1;
+}
+
+.mockup-browser-content {
+  @apply border-t border-base-300;
+}
+
+.mockup-browser-wrapper {
+  @apply border mockup-browser border-base-300 w-[650px];
+}
+
+.mockup-browser-wrapper .mockup-browser-toolbar:before {
+  opacity: 1;
+  box-shadow: 1.4em 0 #ff5c5a, 2.8em 0 #ffba45, 4.2em 0 #00c850;
+}

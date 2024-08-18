@@ -1,0 +1,3 @@
+- You have defined the `RouterView` component with a render function
+- The rendered HTML uses the proper tags and classes
+- Typing in the input within the `RouterView` component correctly updates the active page
